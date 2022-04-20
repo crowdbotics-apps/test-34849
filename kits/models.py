@@ -5,6 +5,13 @@ from django.db import models
 class KitSleeve(models.Model):
     "Generated Model"
     kit_sleeve_id = models.UUIDField()
+    sku = models.ForeignKey(
+        "kits.Sku",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="kitsleeve_sku",
+    )
 
 
 class ActivationCard(models.Model):
@@ -12,9 +19,9 @@ class ActivationCard(models.Model):
     activation_id = models.UUIDField()
     kit = models.ForeignKey(
         "kits.KitSleeve",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="activationcard_kit",
     )
 
@@ -26,10 +33,22 @@ class Sku(models.Model):
     )
     partner = models.ForeignKey(
         "partners.Partner",
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE,
+        related_name="sku_partner",
+    )
+
+
+class CollectionDevice(models.Model):
+    "Generated Model"
+    device_id = models.UUIDField()
+    kit = models.ForeignKey(
+        "kits.KitSleeve",
         on_delete=models.CASCADE,
         null=True,
         blank=True,
-        related_name="sku_partner",
+        related_name="collectiondevice_kit",
     )
 
 
