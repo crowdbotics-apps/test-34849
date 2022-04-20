@@ -7,9 +7,9 @@ class KitSleeve(models.Model):
     kit_sleeve_id = models.UUIDField()
     sku = models.ForeignKey(
         "kits.Sku",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="kitsleeve_sku",
     )
 
@@ -45,10 +45,38 @@ class CollectionDevice(models.Model):
     device_id = models.UUIDField()
     kit = models.ForeignKey(
         "kits.KitSleeve",
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE,
+        related_name="collectiondevice_kit",
+    )
+    type = models.ForeignKey(
+        "kits.CollectionDeviceType",
         on_delete=models.CASCADE,
         null=True,
         blank=True,
-        related_name="collectiondevice_kit",
+        related_name="collectiondevice_type",
+    )
+
+
+class CollectionDeviceTypeSkus(models.Model):
+    "Generated Model"
+    collection_device_type = models.ForeignKey(
+        "kits.CollectionDeviceType",
+        on_delete=models.CASCADE,
+        related_name="collectiondevicetypeskus_collection_device_type",
+    )
+    sku = models.ForeignKey(
+        "kits.Sku",
+        on_delete=models.CASCADE,
+        related_name="collectiondevicetypeskus_sku",
+    )
+
+
+class CollectionDeviceType(models.Model):
+    "Generated Model"
+    name = models.CharField(
+        max_length=64,
     )
 
 

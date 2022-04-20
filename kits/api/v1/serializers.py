@@ -1,5 +1,12 @@
 from rest_framework import serializers
-from kits.models import ActivationCard, CollectionDevice, KitSleeve, Sku
+from kits.models import (
+    ActivationCard,
+    CollectionDevice,
+    CollectionDeviceType,
+    CollectionDeviceTypeSkus,
+    KitSleeve,
+    Sku,
+)
 
 
 class KitSleeveSerializer(serializers.ModelSerializer):
@@ -23,4 +30,16 @@ class SkuSerializer(serializers.ModelSerializer):
 class CollectionDeviceSerializer(serializers.ModelSerializer):
     class Meta:
         model = CollectionDevice
+        fields = "__all__"
+
+
+class CollectionDeviceTypeSkusSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CollectionDeviceTypeSkus
+        fields = "__all__"
+
+
+class CollectionDeviceTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CollectionDeviceType
         fields = "__all__"

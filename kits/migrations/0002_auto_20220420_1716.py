@@ -7,21 +7,44 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('kits', '0001_initial'),
+        ("kits", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='kitsleeve',
-            name='sku',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='kitsleeve_sku', to='kits.Sku'),
+            model_name="kitsleeve",
+            name="sku",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="kitsleeve_sku",
+                to="kits.Sku",
+            ),
         ),
         migrations.CreateModel(
-            name='CollectionDevice',
+            name="CollectionDevice",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('device_id', models.UUIDField()),
-                ('kit', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='collectiondevice_kit', to='kits.KitSleeve')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("device_id", models.UUIDField()),
+                (
+                    "kit",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="collectiondevice_kit",
+                        to="kits.KitSleeve",
+                    ),
+                ),
             ],
         ),
     ]

@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "kits",
     "partners",
+    "shipping",
 ]
 LOCAL_APPS = [
     "home",

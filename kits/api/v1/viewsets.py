@@ -1,8 +1,17 @@
 from rest_framework import authentication
-from kits.models import ActivationCard, CollectionDevice, KitSleeve, Sku
+from kits.models import (
+    ActivationCard,
+    CollectionDevice,
+    CollectionDeviceType,
+    CollectionDeviceTypeSkus,
+    KitSleeve,
+    Sku,
+)
 from .serializers import (
     ActivationCardSerializer,
     CollectionDeviceSerializer,
+    CollectionDeviceTypeSerializer,
+    CollectionDeviceTypeSkusSerializer,
     KitSleeveSerializer,
     SkuSerializer,
 )
@@ -43,3 +52,21 @@ class CollectionDeviceViewSet(viewsets.ModelViewSet):
         authentication.TokenAuthentication,
     )
     queryset = CollectionDevice.objects.all()
+
+
+class CollectionDeviceTypeSkusViewSet(viewsets.ModelViewSet):
+    serializer_class = CollectionDeviceTypeSkusSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = CollectionDeviceTypeSkus.objects.all()
+
+
+class CollectionDeviceTypeViewSet(viewsets.ModelViewSet):
+    serializer_class = CollectionDeviceTypeSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = CollectionDeviceType.objects.all()
