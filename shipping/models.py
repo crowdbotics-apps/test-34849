@@ -10,9 +10,9 @@ class Speed(models.Model):
     speed_days = models.IntegerField()
     carrier = models.ForeignKey(
         "shipping.Carrier",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="speed_carrier",
     )
 
@@ -24,6 +24,37 @@ class Carrier(models.Model):
     )
     scac = models.CharField(
         max_length=6,
+    )
+
+
+class TrackingNumber(models.Model):
+    "Generated Model"
+    tracking_number = models.CharField(
+        max_length=128,
+    )
+    shipping_speed = models.ForeignKey(
+        "shipping.Speed",
+        on_delete=models.CASCADE,
+        related_name="trackingnumber_shipping_speed",
+    )
+    kit_sleeve = models.ForeignKey(
+        "kits.KitSleeve",
+        on_delete=models.CASCADE,
+        related_name="trackingnumber_kit_sleeve",
+    )
+    type = models.ForeignKey(
+        "shipping.Type",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="trackingnumber_type",
+    )
+
+
+class Type(models.Model):
+    "Generated Model"
+    name = models.CharField(
+        max_length=32,
     )
 
 

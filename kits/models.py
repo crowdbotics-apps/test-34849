@@ -52,9 +52,9 @@ class CollectionDevice(models.Model):
     )
     type = models.ForeignKey(
         "kits.CollectionDeviceType",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="collectiondevice_type",
     )
 
