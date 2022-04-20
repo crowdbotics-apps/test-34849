@@ -39,6 +39,7 @@ urlpatterns = [
     path("kits/", include("kits.urls")),
     path("partners/", include("partners.urls")),
     path("shipping/", include("shipping.urls")),
+    path("api/v1/", include("orders.api.v1.urls")),
 ]
 
 admin.site.site_header = "test"

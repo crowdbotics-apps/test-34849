@@ -44,10 +44,17 @@ class TrackingNumber(models.Model):
     )
     type = models.ForeignKey(
         "shipping.Type",
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE,
+        related_name="trackingnumber_type",
+    )
+    order = models.ForeignKey(
+        "orders.Order",
         on_delete=models.CASCADE,
         null=True,
         blank=True,
-        related_name="trackingnumber_type",
+        related_name="trackingnumber_order",
     )
 
 

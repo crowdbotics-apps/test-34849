@@ -7,26 +7,65 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('kits', '0003_auto_20220420_1721'),
-        ('shipping', '0001_initial'),
+        ("kits", "0003_auto_20220420_1721"),
+        ("shipping", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Type',
+            name="Type",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=32)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=32)),
             ],
         ),
         migrations.CreateModel(
-            name='TrackingNumber',
+            name="TrackingNumber",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('tracking_number', models.CharField(max_length=128)),
-                ('kit_sleeve', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='trackingnumber_kit_sleeve', to='kits.KitSleeve')),
-                ('shipping_speed', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='trackingnumber_shipping_speed', to='shipping.Speed')),
-                ('type', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='trackingnumber_type', to='shipping.Type')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("tracking_number", models.CharField(max_length=128)),
+                (
+                    "kit_sleeve",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="trackingnumber_kit_sleeve",
+                        to="kits.KitSleeve",
+                    ),
+                ),
+                (
+                    "shipping_speed",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="trackingnumber_shipping_speed",
+                        to="shipping.Speed",
+                    ),
+                ),
+                (
+                    "type",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="trackingnumber_type",
+                        to="shipping.Type",
+                    ),
+                ),
             ],
         ),
     ]

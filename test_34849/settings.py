@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     "kits",
     "partners",
     "shipping",
+    "orders",
 ]
 LOCAL_APPS = [
     "home",
